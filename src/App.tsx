@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import Web3 from 'web3';
+import BigNumber from 'bignumber.js';
 import { useConnector } from './hooks';
 import './App.css';
 import Button from '@material-ui/core/Button';
@@ -19,12 +20,16 @@ function App() {
     const accounts = await web3.eth.getAccounts();
     const timestamp = (new Date(datetime)).valueOf() / 1000;  // Convert Javascript timestamp for compatibility
     const amountWei = Web3.utils.toWei(amount, 'ether');      // Convert Eth amount to Wei
+    const fee = Web3.utils.toWei('0.01', 'ether');
+    const bg1 = new BigNumber(amountWei);
+    const bg2 = new BigNumber(fee);
+    const totalValue = bg1.plus(bg2).toString();  // We apply flat fee of 0.01ETH for every request
 
     const callData = senderContract.methods.sendEthAtTime(timestamp, recipient).encodeABI();
 
     registryContract.methods
     .newReq(recipient, '0x0000000000000000000000000000000000000000', callData, amountWei, false, false)
-    .send({ from: accounts[0] })
+    .send({ from: accounts[0], value: totalValue })
     .on('error', (e: any) => console.error('error!!!', e))
     .on('transactionHash', () => console.info('Your transaction has been recorded'))
     .on('confirmation', () => console.info('You have successfully claimed your airdrop'));
