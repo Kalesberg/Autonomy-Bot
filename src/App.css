@@ -2,18 +2,65 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
+  background-color: #fff;
+  border-bottom: 2px solid rgba(133, 133, 133, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  padding-left: 16px;
+  padding-right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.App-header .App-logo {
+  flex: 0 0 150px;
+  text-align: left;
+}
+.App-header .App-logo a {
+  font-size: 32px;
+  text-decoration: none;
+}
+.App-header .App-motto {
+  color: rgb(232, 0, 111);
+  text-align: center;
+  font-size: 21px;
+  font-weight: 700;
+  flex: 1;
+}
+
+.App-header .App-actions {
+  flex: 0 0 150px;
+  text-align: left;
+}
+.App-header .btn-connect {
+  align-items: center;
+  background-color: rgb(232, 0, 111);
+  border: 0px;
+  border-radius: 16px;
+  box-shadow: rgb(14 14 44 / 40%) 0px -1px 0px inset;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: 600;
+  height: 32px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  justify-content: center;
+  outline: 0px;
+  padding: 0px 16px;
+  transition: background-color 0.2s ease 0s;
+}
+.App-header .btn-connect:hover {
+  background-color: rgba(232, 0, 111, 0.667);
+}
+
+.App-body {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -24,15 +71,21 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App-form {
+  background-color: rgb(255, 255, 255);
+  border-radius: 24px;
+  width: 420px;
+  box-shadow: rgb(25 19 38 / 10%) 0px 2px 12px -8px, rgb(25 19 38 / 5%) 0px 1px 1px;
+  padding: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-form h3 {
+  color: #282c34;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 30px;
+}
+
+.form-control {
+  margin: 10px 0;
 }

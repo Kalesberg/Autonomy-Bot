@@ -1,0 +1,50 @@
+[
+  {
+    "inputs":[
+      {
+        "internalType": "address",
+        "name": "target",
+        "type": "address"
+      },
+      {
+        "internalType": "address payable",
+        "name": "referer",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "callData",
+        "type": "bytes"
+      },
+      {
+        "internalType": "uint120",
+        "name": "ethForCall",
+        "type": "uint120"
+      },
+      {
+        "internalType": "bool",
+        "name": "verifySender",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "payWithAUTO",
+        "type": "bool"
+      }
+    ],
+    "name": "newReq",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "stateMutability": "payable",
+    "type": "receive"
+  }
+]
