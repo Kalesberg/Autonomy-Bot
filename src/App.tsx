@@ -1,11 +1,14 @@
 import React, { useCallback, useState } from 'react';
 import Web3 from 'web3';
 import BigNumber from 'bignumber.js';
-import { useConnector } from './hooks';
-import './App.css';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import FormHelperText from '@material-ui/core/FormHelperText';
+
+import { useConnector } from './hooks';
+import './App.css';
+import { SENDER_CONTRACT_ADDRESS } from './config/contants';
+
 
 function App() {
   const [datetime, setDatetime] = useState('');   // When to send ETH
@@ -28,7 +31,7 @@ function App() {
     const callData = senderContract.methods.sendEthAtTime(timestamp, recipient).encodeABI();
 
     registryContract.methods
-    .newReq(recipient, '0x0000000000000000000000000000000000000000', callData, amountWei, false, false)
+    .newReq(SENDER_CONTRACT_ADDRESS, '0x0000000000000000000000000000000000000000', callData, amountWei, false, false)
     .send({ from: accounts[0], value: totalValue })
     .on('error', (e: any) => console.error('error!!!', e))
     .on('transactionHash', () => console.info('Your transaction has been recorded'))
